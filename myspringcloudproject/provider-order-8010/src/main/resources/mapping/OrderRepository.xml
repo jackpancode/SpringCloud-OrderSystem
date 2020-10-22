@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.besti.springcloud.repository.OrderRepository">
+
+
+    <resultMap id="orderMap" type="Order">
+        <id column="id" property="id"></id>
+        <result column="date" property="date"></result>
+        <result column="state" property="state"></result>
+
+        <!--列联查询，从menu表中将mid与菜品名查询对应-->
+        <association property="menu" select="com.besti.springcloud.repository.MenuRepository.findById" column="mid"></association>
+    </resultMap>
+
+    <insert id="save" parameterType="Order">
+        INSERT INTO t_order(uid,mid,date,state) VALUES(#{user.id},#{menu.id},#{date},0);
+    </insert>
+
+    <select id="findAllByUid" resultMap="orderMap">
+        SELECT id,mid,date,state FROM t_order WHERE uid = #{param3} limit #{param1},#{param2};
+    </select>
+
+    <select id="countByUid" parameterType="long" resultType="int">
+        SELECT count(*) FROM t_order WHERE uid=#{id};
+    </select>
+
+
+
+</mapper>

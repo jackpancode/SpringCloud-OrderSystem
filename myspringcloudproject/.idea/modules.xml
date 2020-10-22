@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cloud-api-commons/cloud-api-commons.iml" filepath="$PROJECT_DIR$/cloud-api-commons/cloud-api-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server-8762/config-server-8762.iml" filepath="$PROJECT_DIR$/config-server-8762/config-server-8762.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-client/consumer-client.iml" filepath="$PROJECT_DIR$/consumer-client/consumer-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server-8761/eureka-server-8761.iml" filepath="$PROJECT_DIR$/eureka-server-8761/eureka-server-8761.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myspringcloudproject.iml" filepath="$PROJECT_DIR$/myspringcloudproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-account/provider-account.iml" filepath="$PROJECT_DIR$/provider-account/provider-account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-menu/provider-menu.iml" filepath="$PROJECT_DIR$/provider-menu/provider-menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-order-8010/provider-order-8010.iml" filepath="$PROJECT_DIR$/provider-order-8010/provider-order-8010.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-user/provider-user.iml" filepath="$PROJECT_DIR$/provider-user/provider-user.iml" />
+    </modules>
+  </component>
+</project>

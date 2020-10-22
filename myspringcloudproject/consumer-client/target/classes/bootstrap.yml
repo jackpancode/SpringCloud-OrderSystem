@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: client
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8762
+      fail-fast: true
+
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+
+
+ribbon:
+  eureka:
+    enabled: true
