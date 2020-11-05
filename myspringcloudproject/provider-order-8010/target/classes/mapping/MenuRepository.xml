@@ -11,30 +11,9 @@
         <association property="type" select="com.besti.springcloud.repository.TypeRepository.findById" column="tid"></association>
     </resultMap>
 
-    <select id="findAll" resultMap="menuMap">
-        SELECT * FROM t_menu limit #{param1},#{param2};
-    </select>
-
-    <select id="count" resultType="int">
-        SELECT count(id) from t_menu;
-    </select>
-
     <select id="findById" parameterType="long" resultMap="menuMap">
         SELECT * from t_menu WHERE id = #{id}
     </select>
-
-    <insert id="save" parameterType="com.besti.springcloud.entity.Menu">
-        INSERT INTO t_menu(name,price,flavor,tid) VALUES(#{name},#{price},#{flavor},#{type.id});
-    </insert>
-
-    <update id="update" parameterType="com.besti.springcloud.entity.Menu">
-        UPDATE t_menu set name = #{name},price = #{price} ,flavor = #{flavor},tid = #{type.id} WHERE id = #{id};
-    </update>
-
-    <delete id="deleteById" parameterType="long">
-        DELETE from t_menu WHERE id = #{id};
-    </delete>
-
 
 
 </mapper>

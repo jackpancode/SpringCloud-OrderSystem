@@ -9,20 +9,37 @@
         <result column="date" property="date"></result>
         <result column="state" property="state"></result>
 
-        <!--列联查询，从menu表中将mid与菜品名查询对应-->
+        <!--列联查询，使用mid去关联对应的菜单信息-->
         <association property="menu" select="com.besti.springcloud.repository.MenuRepository.findById" column="mid"></association>
+        <!--列联查询，使用uid去关联对应的用户信息-->
+        <association property="user" select="com.besti.springcloud.repository.UserRepository.findById" column="uid"></association>
     </resultMap>
 
     <insert id="save" parameterType="Order">
         INSERT INTO t_order(uid,mid,date,state) VALUES(#{user.id},#{menu.id},#{date},0);
     </insert>
 
+    <!--根据用户id查询订单信息-->
     <select id="findAllByUid" resultMap="orderMap">
         SELECT id,mid,date,state FROM t_order WHERE uid = #{param3} limit #{param1},#{param2};
     </select>
 
     <select id="countByUid" parameterType="long" resultType="int">
         SELECT count(*) FROM t_order WHERE uid=#{id};
+    </select>
+
+    <!--管理员查询未派送订单信息-->
+    <select id="findAllByState" resultMap="orderMap">
+        SELECT id,mid,uid,date,state FROM t_order WHERE state = 0 limit #{param1},#{param2};
+    </select>
+
+
+    <update id="updateState" parameterType="long">
+        UPDATE t_order set state = 1 WHERE id=#{id};
+    </update>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM t_order WHERE state = 0;
     </select>
 
 

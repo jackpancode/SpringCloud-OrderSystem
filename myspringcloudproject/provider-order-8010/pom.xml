@@ -17,8 +17,8 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <exclusions>
                 <exclusion>
-                    <artifactId>woodstox-core</artifactId>
-                    <groupId>com.fasterxml.woodstox</groupId>
+                    <groupId>com.fasterxml.jackson.dataformat</groupId>
+                    <artifactId>jackson-dataformat-xml</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>

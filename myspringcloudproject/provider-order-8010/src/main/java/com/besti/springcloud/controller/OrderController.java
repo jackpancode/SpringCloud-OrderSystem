@@ -1,6 +1,7 @@
 package com.besti.springcloud.controller;
 
 import com.besti.springcloud.entity.Order;
+import com.besti.springcloud.entity.OrderHandlerVO;
 import com.besti.springcloud.entity.OrderVO;
 import com.besti.springcloud.repository.OrderRepository;
 import org.aspectj.weaver.ast.Or;
@@ -42,5 +43,21 @@ public class OrderController {
     @GetMapping(value = "/countByUid/{uid}",produces = {"application/json;charset=UTF-8"})
     public int countByUid(@PathVariable("uid") int uid){
         return orderRepository.countByUid(uid);
+    }
+
+
+    @GetMapping(value = "/findAllByState/{index}/{limit}",produces = { "application/json;charset=UTF-8" })
+    public OrderVO findAllByState(@PathVariable("index") int index,@PathVariable("limit") int limit){
+        OrderVO orderVO = new OrderVO();
+        orderVO.setMsg("");
+        orderVO.setCount(orderRepository.count());
+        orderVO.setData(orderRepository.findAllByState(index,limit));
+        return orderVO;
+    }
+
+
+    @PutMapping(value = "/updateState/{id}")
+    public void updateState(@PathVariable("id") long id){
+        orderRepository.updateState(id);
     }
 }

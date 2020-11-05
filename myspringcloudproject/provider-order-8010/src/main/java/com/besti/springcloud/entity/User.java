@@ -1,6 +1,8 @@
 package com.besti.springcloud.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -9,6 +11,8 @@ import java.util.Date;
  * @version 1.0 2020/10/21
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     private long id;
     private String username;
