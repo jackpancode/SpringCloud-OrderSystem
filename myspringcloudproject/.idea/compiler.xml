@@ -9,9 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cloud-api-commons" />
         <module name="commons" />
-        <module name="config-server-8762" />
         <module name="consumer-client" />
-        <module name="eureka-server-8761" />
         <module name="provider-account" />
         <module name="provider-menu" />
         <module name="provider-order-8010" />

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @version 1.0 2020/10/21
  */
 @Component
-@FeignClient(value = "user")
+@FeignClient(value = "user-8040")
 public interface UserFeign {
 
     @GetMapping(value = "/user/findAll/{index}/{limit}")

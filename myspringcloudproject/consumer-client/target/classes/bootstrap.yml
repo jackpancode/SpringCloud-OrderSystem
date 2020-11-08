@@ -1,12 +1,17 @@
+server:
+  port: 8030
+
 spring:
   application:
-    name: client
+    name: client-8030
   profiles:
     active: dev
   cloud:
-    config:
-      uri: http://localhost:8762
-      fail-fast: true
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
 
   thymeleaf:
     prefix: classpath:/static/
@@ -14,6 +19,3 @@ spring:
     cache: false
 
 
-ribbon:
-  eureka:
-    enabled: true

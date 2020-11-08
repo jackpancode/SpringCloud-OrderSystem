@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author Jack Pan
  * @version 1.0 2020/10/21
  */
-@FeignClient(value = "account")
+@FeignClient(value = "account-8050")
 public interface AccountFeign {
 
     @GetMapping(value = "/account/login/{username}/{password}/{type}")

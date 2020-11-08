@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @version 1.0 2020/10/22
  */
 @Component
-@FeignClient(value = "order")
+@FeignClient(value = "order-8010")
 public interface OrderFeign {
 
     @PostMapping(value = "/order/save")

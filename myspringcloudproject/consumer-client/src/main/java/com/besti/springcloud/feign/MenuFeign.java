@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0 2020/10/20
  */
 @Component
-@FeignClient(value = "menu")
+@FeignClient(value = "menu-8020")
 public interface MenuFeign {
 
 

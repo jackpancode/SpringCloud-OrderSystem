@@ -1,9 +1,20 @@
+server:
+  port: 8050
+
 spring:
   application:
-    name: account
+    name: account-8050
   profiles:
     active: dev
   cloud:
-    config:
-      uri: http://localhost:8762
-      fail-fast: true
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        group: dev
+        namespace: ce916842-2694-4069-b96f-35f417060c0e
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
