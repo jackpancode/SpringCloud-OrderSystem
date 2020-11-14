@@ -1,5 +1,7 @@
 package com.besti.springcloud.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.besti.springcloud.Rabbitmq.Sender;
 import com.besti.springcloud.entity.*;
 import com.besti.springcloud.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class ConsumerOrderController {
     @Autowired
     private OrderFeign orderFeign;
 
+    @Autowired
+    private Sender sender;
+
     @GetMapping(value = "/save/{mid}")
     public String save(@PathVariable("mid") int mid,HttpSession session){
         User user = (User)session.getAttribute("user");
@@ -30,7 +35,9 @@ public class ConsumerOrderController {
         Menu menu = new Menu();
         menu.setId(mid);
         order.setMenu(menu);
-        orderFeign.save(order);
+        String json_object = JSONObject.toJSONString(order);
+        sender.sendTopicCreateUser(json_object);
+       // orderFeign.save(order);
         return  "order";
 
     }
