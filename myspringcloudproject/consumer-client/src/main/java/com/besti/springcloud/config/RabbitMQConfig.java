@@ -19,10 +19,10 @@ public class RabbitMQConfig {
         return new TopicExchange(RabbitConstants.USER_EXCHANGE);
     }
 
-    @Bean(name="delete_message")
-    public Queue deletequeue(){
-        return  new Queue("topic.find");
-    }
+//    @Bean(name="delete_message")
+//    public Queue deletequeue(){
+//        return  new Queue("topic.find");
+//    }
 
     @Bean(name="createuser_message")
     public Queue createqueue(){
@@ -33,10 +33,10 @@ public class RabbitMQConfig {
                 .build();
     }
 
-    @Bean(name="usercount_message")
-    public Queue usercountqueue(){
-        return  new Queue("topic.usercount");
-    }
+//    @Bean(name="usercount_message")
+//    public Queue usercountqueue(){
+//        return  new Queue("topic.usercount");
+//    }
 
 //    @Bean
 //    public Binding deleteByid_binding(@Qualifier("delete_message") Queue queue, TopicExchange topicExchange){
@@ -64,7 +64,7 @@ public class RabbitMQConfig {
     //配置死信队列
     @Bean(name="dead_queue")
     public Queue deadQueue() {
-        return new Queue(RabbitConstants.DEAD_QUEUE, true);
+        return new Queue(RabbitConstants.DEAD_QUEUE);
     }
 
     @Bean

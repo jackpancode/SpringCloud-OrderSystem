@@ -12,7 +12,7 @@ spring:
         server-addr: localhost:8848
         file-extension: yaml
         group: dev
-        namespace: 33ceb384-3f02-428a-8954-a72bb876d7ca
+        namespace: ff5f52ee-32ea-486a-a3d8-8641dc1405e1
     consul:
       host: localhost
       port: 8500

@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Date;
+
+import static com.besti.springcloud.config.RabbitConstants.USER_QUEUE;
 
 /**
  * @author Jack Pan
@@ -24,16 +27,15 @@ public class Receiver {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private Sender sender;
 
 
-    @RabbitListener(queues = "topic.createuser")
+    @RabbitListener(queues = RabbitConstants.USER_QUEUE)
     public void getMsgCreate(Message message, Channel channel) throws Exception{
         String receivedRoutingKey = message.getMessageProperties().getReceivedRoutingKey();
         String msg = new String(message.getBody());
         System.out.println("路由key= [ "+receivedRoutingKey+" ]接收到的消息= [ "+msg +" ]");
         Order order = JSONObject.parseObject(msg,Order.class);
+        order.setDate(new Date());
         orderRepository.save(order);
 
         channel.basicAck(message.getMessageProperties().getDeliveryTag(),true);
@@ -45,6 +47,9 @@ public class Receiver {
         String receivedRoutingKey = message.getMessageProperties().getReceivedRoutingKey();
         String msg = new String(message.getBody());
         System.out.println("路由key= [ "+receivedRoutingKey+" ]接收到的消息= [ "+msg +" ]");
+        Order order = JSONObject.parseObject(msg,Order.class);
+        order.setDate(new Date());
+        orderRepository.save(order);
         //Thread.sleep(5000);
         // 发送ack给消息队列，收到消息了
         channel.basicAck(message.getMessageProperties().getDeliveryTag(),true);
